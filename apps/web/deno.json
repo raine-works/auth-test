@@ -1,9 +1,10 @@
 {
 	"name": "@app/web",
+	"version": "1.0.0",
 	"exports": "./src/mod.ts",
 	"tasks": {
-		"dev": "deno run -A --node-modules-dir npm:vite",
-		"build": "deno run -A --node-modules-dir npm:vite build"
+		"build": "deno run -A --node-modules-dir npm:vite build",
+		"dev": "deno run -A --node-modules-dir npm:vite"
 	},
 	"imports": {
 		"@/": "./src/",
