@@ -10,6 +10,10 @@ export default defineConfig({
 			'@': path.resolve(import.meta.dirname as string, './src'),
 		},
 	},
+	build: {
+		emptyOutDir: true,
+		outDir: '../server/.static/web',
+	},
 	server: {
 		host: '127.0.0.1',
 		port: 3000,
