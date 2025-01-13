@@ -1,0 +1,22 @@
+services:
+    db:
+        image: postgres:17.2-alpine
+        restart: always
+        environment:
+            - POSTGRES_USER=dev_user
+            - POSTGRES_PASSWORD=dev_password
+            - POSTGRES_DB=vault
+        ports:
+            - '5432:5432'
+        volumes:
+            - db:/var/lib/postgresql/data
+        networks:
+            - postgres_net
+
+volumes:
+    db:
+        driver: local
+
+networks:
+    postgres_net:
+        driver: bridge

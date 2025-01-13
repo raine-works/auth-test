@@ -4,7 +4,10 @@
 	"exports": "./src/mod.ts",
 	"tasks": {
 		"build": "deno compile -A -o .build/server src/mod.ts",
-		"dev": "deno run -A --env-file --watch src/mod.ts"
+		"dev": {
+			"command": "deno run -A --env-file --watch src/mod.ts",
+			"dependencies": ["db:start"]
+		}
 	},
 	"imports": {
 		"@/": "./src/",
@@ -13,6 +16,7 @@
 		"pino": "npm:pino@9.6.0",
 		"pino-pretty": "npm:pino-pretty@13.0.0",
 		"zod": "npm:zod@3.24.1",
-		"zod-openapi": "npm:zod-openapi@4.2.2"
+		"zod-openapi": "npm:zod-openapi@4.2.2",
+		"better-auth": "npm:better-auth@1.1.11"
 	}
 }
