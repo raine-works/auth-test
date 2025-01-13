@@ -6,6 +6,7 @@ import { env } from '@/configs/env.ts';
 export const auth = betterAuth({
 	database: drizzleAdapter(db, { provider: 'pg', schema }),
 	secret: env.BETTER_AUTH_SECRET,
+	trustedOrigins: ['*'],
 	emailAndPassword: {
 		enabled: true,
 	},
