@@ -1,10 +1,18 @@
 import type { logger } from '@/utils/logger.ts';
-import type { auth } from '@/utils/auth.ts';
+import type { schema } from '@app/orm';
+import type { api } from '@/app.ts';
+
+export type Session = {
+	session: typeof schema.session.$inferSelect;
+	user: typeof schema.user.$inferSelect;
+};
 
 declare module 'hono' {
 	interface ContextVariableMap {
 		logger: typeof logger;
-		user: typeof auth.$Infer.Session.user | null;
-		session: typeof auth.$Infer.Session.session | null;
+		session: Session['session'] | null;
+		user: Session['user'] | null;
 	}
 }
+
+export type Api = typeof api;

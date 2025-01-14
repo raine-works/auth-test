@@ -1,16 +1,6 @@
 import { createRootRoute, createRoute, Outlet } from '@tanstack/react-router';
-import { client } from '@/lib/api.ts';
 import { redirect } from '@tanstack/react-router';
-
-const isAuthenticated = async () => {
-	const response = await client.api.auth.session.$get();
-	if (response.ok) {
-		const json = await response.json();
-		return json;
-	} else {
-		return null;
-	}
-};
+import { getSession } from '@/lib/auth.ts';
 
 const rootRoute = createRootRoute({
 	component: () => <Outlet />,
@@ -20,7 +10,7 @@ const indexRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	path: '/',
 	beforeLoad: async () => {
-		if (!(await isAuthenticated())) {
+		if (!(await getSession())) {
 			throw redirect({
 				to: '/sign-in',
 			});

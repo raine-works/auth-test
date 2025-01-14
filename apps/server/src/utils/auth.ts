@@ -11,8 +11,14 @@ export const auth = betterAuth({
 		enabled: true,
 	},
 	advanced: {
+		cookiePrefix: 'my-app',
 		generateId: () => {
 			return crypto.randomUUID();
+		},
+	},
+	session: {
+		cookieCache: {
+			enabled: true,
 		},
 	},
 });
