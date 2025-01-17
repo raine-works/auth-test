@@ -1,7 +1,10 @@
+import { type AnyPgColumn, boolean, pgTable, text, uniqueIndex } from 'drizzle-orm/pg-core';
+import { baseTable } from './lib/utils.ts';
 import { relations, type SQL, sql } from 'drizzle-orm';
-import { type AnyPgColumn, boolean, pgTable, text, timestamp, uniqueIndex, uuid } from 'drizzle-orm/pg-core';
 import { session } from '../../drizzle/schema/session.ts';
 import { account } from '../../drizzle/schema/account.ts';
+import { oauthAccessToken } from './oauth-access-token.ts';
+import { oauthConsent } from './oauth-consent.ts';
 
 const lower = (email: AnyPgColumn): SQL => {
 	return sql`lower(${email})`;
@@ -10,12 +13,7 @@ const lower = (email: AnyPgColumn): SQL => {
 export const user = pgTable(
 	'user',
 	{
-		id: uuid('id').primaryKey().defaultRandom(),
-		createdAt: timestamp('createdAt').notNull().defaultNow(),
-		updatedAt: timestamp('updatedAt')
-			.notNull()
-			.defaultNow()
-			.$onUpdate(() => new Date()),
+		...baseTable,
 		name: text('name').notNull(),
 		email: text('email').notNull(),
 		emailVerified: boolean('emailVerified'),
@@ -28,4 +26,6 @@ export const user = pgTable(
 export const userRelations = relations(user, ({ many }) => ({
 	session: many(session),
 	account: many(account),
+	oauthAccessToken: many(oauthAccessToken),
+	oauthConsent: many(oauthConsent),
 }));

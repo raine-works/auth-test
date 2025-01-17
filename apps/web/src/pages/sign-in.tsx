@@ -1,4 +1,5 @@
 import { createLazyRoute, useNavigate } from '@tanstack/react-router';
+// @deno-types="@types/react"
 import { useState } from 'react';
 import { authClient } from '@/lib/auth.ts';
 

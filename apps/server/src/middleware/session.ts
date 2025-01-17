@@ -1,5 +1,6 @@
 import { createMiddleware } from 'hono/factory';
-import { auth } from '@/utils/auth.ts';
+import { auth } from '@/lib/auth.ts';
+import { UAParser } from 'ua-parser-js';
 import type { Session } from '@/env.d.ts';
 
 export const session = createMiddleware(async (c, next) => {
@@ -10,6 +11,9 @@ export const session = createMiddleware(async (c, next) => {
 		c.set('session', null);
 		return next();
 	}
+
+	const ua = UAParser(session.session.userAgent!);
+	console.log(ua.os.name);
 
 	c.set('user', session.user);
 	c.set('session', session.session);
