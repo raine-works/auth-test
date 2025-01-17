@@ -1,4 +1,5 @@
 import { betterAuth } from 'better-auth';
+import { oidcProvider } from 'better-auth/plugins';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db, schema } from '@app/orm';
 import { env } from '@/configs/env.ts';
@@ -21,4 +22,15 @@ export const auth = betterAuth({
 			enabled: true,
 		},
 	},
+	plugins: [
+		oidcProvider({
+			loginPage: '/sign-in',
+			consentPage: '/sign-in/#consent',
+			scopes: ['app:test'],
+			metadata: {},
+			generateClientId: () => {
+				return crypto.randomUUID();
+			},
+		}),
+	],
 });
