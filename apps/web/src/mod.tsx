@@ -1,9 +1,10 @@
 // @deno-types="@types/react"
-import { StrictMode } from 'react';
-import { createRouter, RouterProvider } from '@tanstack/react-router';
+import * as React from 'react';
 // @deno-types="@types/react-dom/client"
 import { createRoot } from 'react-dom/client';
+import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { routeTree } from '@/routes.tsx';
+import '@/global.css';
 
 const router = createRouter({ routeTree });
 
@@ -14,7 +15,7 @@ declare module '@tanstack/react-router' {
 }
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-	<StrictMode>
+	<React.StrictMode>
 		<RouterProvider router={router} />
-	</StrictMode>,
+	</React.StrictMode>,
 );

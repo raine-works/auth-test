@@ -1,6 +1,6 @@
-import { createLazyRoute, useNavigate } from '@tanstack/react-router';
 // @deno-types="@types/react"
 import { useEffect, useState } from 'react';
+import { createLazyRoute, useNavigate } from '@tanstack/react-router';
 import { authClient } from '@/lib/auth.ts';
 import { api } from '@/lib/api.ts';
 

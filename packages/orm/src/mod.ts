@@ -16,12 +16,3 @@ export const db = drizzle({
 });
 
 export const schema = { user, account, session, verification, oauthAccessToken, oauthApplication, oauthConsent };
-
-export const quickQueries = {
-	getClientApps: async () => {
-		const list = await db.query.oauthApplication.findMany();
-		return list.map((clientApp) => {
-			return { name: clientApp.name, redirectURLs: clientApp.redirectURLs };
-		});
-	},
-};

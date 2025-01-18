@@ -3,7 +3,7 @@ import { authRoute } from '@/routes/auth.ts';
 import { clientRoute } from '@/routes/client.ts';
 import { wsRoute } from '@/routes/ws.ts';
 import { proxy } from '@/middleware/proxy.ts';
-import { database } from '@/middleware/database.ts';
+import { database } from '@/middleware/db.ts';
 import { honoLogger } from '@/middleware/logger.ts';
 import { session } from '@/middleware/session.ts';
 

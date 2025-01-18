@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
+import { getClientApps } from '@/lib/db.ts';
 
 export const clientRoute = new Hono().get('/apps', async (c) => {
-	const queries = c.get('quickQueries');
-	return c.json(await queries.getClientApps());
+	return c.json(await getClientApps());
 });
