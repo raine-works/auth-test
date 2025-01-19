@@ -3,11 +3,11 @@ import React from 'react';
 
 import { createLazyRoute } from '@tanstack/react-router';
 
-React.useEffect(() => {
-	console.log('It loaded');
-});
-
 const Home = () => {
+	React.useEffect(() => {
+		console.log('It loaded');
+	});
+
 	return (
 		<>
 			Test
