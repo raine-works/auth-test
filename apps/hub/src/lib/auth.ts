@@ -1,6 +1,6 @@
 import { createAuthClient } from 'better-auth/react';
 import { oidcClient } from 'better-auth/client/plugins';
-import type { Session } from '@app/server';
+import type { Session } from '@auth-test/server';
 
 export const authClient = createAuthClient({
 	baseURL: new URL(import.meta.url).origin,

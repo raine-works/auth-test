@@ -1,5 +1,5 @@
 {
-	"name": "@app/orm",
+	"name": "@auth-test/orm",
 	"version": "1.0.0",
 	"exports": "./src/mod.ts",
 	"tasks": {

@@ -1,5 +1,5 @@
 {
-	"name": "@app/web",
+	"name": "@auth-test/hub",
 	"version": "1.0.0",
 	"exports": "./src/mod.ts",
 	"tasks": {
@@ -8,7 +8,7 @@
 	},
 	"imports": {
 		"@/": "./src/",
-		"@app/ui/": "../../packages/ui/",
+		"@auth-test/ui/": "../../packages/ui/",
 		"@deno/vite-plugin": "npm:@deno/vite-plugin@1.0.2",
 		"@tanstack/react-router": "npm:@tanstack/react-router@1.95.1",
 		"@types/react": "npm:@types/react@19.0.3",

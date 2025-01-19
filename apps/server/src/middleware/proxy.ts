@@ -7,6 +7,7 @@ export const proxy = (pathToStatic: string) => {
 	return createMiddleware((c, next) => {
 		const requestedPath = c.req.path;
 		const fullPath = path.join(pathToStatic, requestedPath);
+		console.log(fullPath);
 		if (fs.existsSync(fullPath) && fs.lstatSync(fullPath).isFile()) {
 			return serveStatic({ root: pathToStatic })(c, next);
 		} else {

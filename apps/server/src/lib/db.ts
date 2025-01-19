@@ -1,4 +1,4 @@
-import { db, schema } from '@app/orm';
+import { db, schema } from '@auth-test/orm';
 
 export const getClientApps = async () => {
 	const list = await db.query.oauthApplication.findMany();

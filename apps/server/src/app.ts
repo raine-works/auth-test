@@ -17,4 +17,5 @@ export const api = app
 	.route('/client', clientRoute)
 	.route('/ws', wsRoute);
 
-app.use(proxy('./.static/web'));
+app.use('/client/*', proxy('./.static/'));
+app.use('/*', proxy('./.static'));

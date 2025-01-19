@@ -1,6 +1,6 @@
 // @deno-types="@types/react"
 import * as React from 'react';
-import { cn } from '@app/ui/src/lib/utils.ts';
+import { cn } from '@auth-test/ui/src/lib/utils.ts';
 
 const Input = React.forwardRef<HTMLInputElement, React.ComponentProps<'input'>>(
 	({ className, type, ...props }, ref) => {

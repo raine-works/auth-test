@@ -1,7 +1,7 @@
 {
 	"version": "1.0.0",
 	"imports": {
-		"@app/ui/": "./",
+		"@auth-test/ui/": "./",
 		"tailwindcss": "npm:tailwindcss@3.4.17",
 		"tailwindcss-animate": "npm:tailwindcss-animate@1.0.1",
 		"class-variance-authority": "npm:class-variance-authority@0.7.1",

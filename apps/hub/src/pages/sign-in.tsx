@@ -2,14 +2,13 @@
 import * as React from 'react';
 import { createLazyRoute, useNavigate } from '@tanstack/react-router';
 import { authClient } from '@/lib/auth.ts';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@app/ui/src/components/card.tsx';
-import { Button } from '@app/ui/src/components/button.tsx';
-import { Input } from '@app/ui/src/components/input.tsx';
-import { Label } from '@app/ui/src/components/label.tsx';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@auth-test/ui/src/components/card.tsx';
+import { Button } from '@auth-test/ui/src/components/button.tsx';
+import { Input } from '@auth-test/ui/src/components/input.tsx';
+import { Label } from '@auth-test/ui/src/components/label.tsx';
 
-const SignUp = () => {
+const SignIn = () => {
 	const navigate = useNavigate();
-	const [name, setName] = React.useState('');
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
 
@@ -27,8 +26,7 @@ const SignUp = () => {
 						<form
 							onSubmit={async (event) => {
 								event.preventDefault();
-								const { data, error } = await authClient.signUp.email({
-									name,
+								const { data, error } = await authClient.signIn.email({
 									email,
 									password,
 								});
@@ -43,18 +41,7 @@ const SignUp = () => {
 						>
 							<div className='flex flex-col gap-6'>
 								<div className='grid gap-2'>
-									<Label htmlFor='password'>Full Name</Label>
-									<Input
-										type='text'
-										placeholder='name'
-										value={name}
-										onInput={(event) => {
-											setName((event.target as HTMLInputElement).value);
-										}}
-									/>
-								</div>
-								<div className='grid gap-2'>
-									<Label htmlFor='password'>Email</Label>
+									<Label htmlFor='email'>Email</Label>
 									<Input
 										type='text'
 										placeholder='email'
@@ -85,6 +72,6 @@ const SignUp = () => {
 	);
 };
 
-export const Route = createLazyRoute('/sign-up')({
-	component: SignUp,
+export const Route = createLazyRoute('/sign-in')({
+	component: SignIn,
 });

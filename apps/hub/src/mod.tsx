@@ -4,7 +4,7 @@ import * as React from 'react';
 import { createRoot } from 'react-dom/client';
 import { createRouter, RouterProvider } from '@tanstack/react-router';
 import { routeTree } from '@/routes.tsx';
-import '@/global.css';
+import './global.css';
 
 const router = createRouter({ routeTree });
 
@@ -16,6 +16,6 @@ declare module '@tanstack/react-router' {
 
 createRoot(document.getElementById('root') as HTMLElement).render(
 	<React.StrictMode>
-		<RouterProvider router={router} />
+		<RouterProvider basepath='/' router={router} />
 	</React.StrictMode>,
 );

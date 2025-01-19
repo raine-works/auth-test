@@ -1,7 +1,7 @@
 import { betterAuth } from 'better-auth';
 import { oidcProvider } from 'better-auth/plugins';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { db, schema } from '@app/orm';
+import { db, schema } from '@auth-test/orm';
 import { env } from '@/configs/env.ts';
 
 export const auth = betterAuth({

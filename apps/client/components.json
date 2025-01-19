@@ -13,8 +13,8 @@
 		"components": "@/components",
 		"hooks": "@/hooks",
 		"lib": "@/src/lib",
-		"utils": "@app/ui/lib/utils",
-		"ui": "@app/ui/components"
+		"utils": "@auth-test/ui/lib/utils",
+		"ui": "@auth-test/ui/components"
 	},
 	"iconLibrary": "lucide"
 }

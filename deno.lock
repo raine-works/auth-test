@@ -2758,19 +2758,7 @@
   },
   "workspace": {
     "members": {
-      "apps/server": {
-        "dependencies": [
-          "npm:better-auth@1.1.11",
-          "npm:hono-openapi@0.3.1",
-          "npm:hono@4.6.16",
-          "npm:pino-pretty@13.0.0",
-          "npm:pino@9.6.0",
-          "npm:ua-parser-js@2.0.0",
-          "npm:zod-openapi@4.2.2",
-          "npm:zod@3.24.1"
-        ]
-      },
-      "apps/web": {
+      "apps/client": {
         "dependencies": [
           "npm:@deno/vite-plugin@1.0.2",
           "npm:@tanstack/react-router@1.95.1",
@@ -2785,6 +2773,35 @@
           "npm:react@19.0.0",
           "npm:tailwindcss@3.4.17",
           "npm:vite@6.0.7"
+        ]
+      },
+      "apps/hub": {
+        "dependencies": [
+          "npm:@deno/vite-plugin@1.0.2",
+          "npm:@tanstack/react-router@1.95.1",
+          "npm:@types/react-dom@19.0.2",
+          "npm:@types/react@19.0.3",
+          "npm:@vitejs/plugin-react@4.3.4",
+          "npm:better-auth@1.1.11",
+          "npm:hono@4.6.16",
+          "npm:lucide-react@0.473.0",
+          "npm:postcss@8.5.1",
+          "npm:react-dom@19.0.0",
+          "npm:react@19.0.0",
+          "npm:tailwindcss@3.4.17",
+          "npm:vite@6.0.7"
+        ]
+      },
+      "apps/server": {
+        "dependencies": [
+          "npm:better-auth@1.1.11",
+          "npm:hono-openapi@0.3.1",
+          "npm:hono@4.6.16",
+          "npm:pino-pretty@13.0.0",
+          "npm:pino@9.6.0",
+          "npm:ua-parser-js@2.0.0",
+          "npm:zod-openapi@4.2.2",
+          "npm:zod@3.24.1"
         ]
       },
       "packages/orm": {
