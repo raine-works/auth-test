@@ -9,7 +9,7 @@ export const oauthAccessToken = pgTable('oauthAccessToken', {
 	refreshToken: text('refreshToken').notNull(),
 	accessTokenExpiresAt: timestamp('accessTokenExpiresAt').notNull(),
 	refreshTokenExpiresAt: timestamp('refreshTokenExpiresAt').notNull(),
-	clientId: uuid('clientId').references(() => oauthApplication.clientId),
+	clientId: text('clientId').references(() => oauthApplication.clientId),
 	userId: uuid('userId').references(() => user.id),
 	scopes: text('scopes').notNull(),
 });

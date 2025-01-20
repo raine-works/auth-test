@@ -1,5 +1,5 @@
 import { betterAuth } from 'better-auth';
-import { oidcProvider } from 'better-auth/plugins';
+import { oidcProvider, openAPI } from 'better-auth/plugins';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { db, schema } from '@auth-test/orm';
 import { env } from '@/configs/env.ts';
@@ -7,12 +7,12 @@ import { env } from '@/configs/env.ts';
 export const auth = betterAuth({
 	database: drizzleAdapter(db, { provider: 'pg', schema }),
 	secret: env.BETTER_AUTH_SECRET,
-	trustedOrigins: ['*'],
+	trustedOrigins: ['http://localhost:3000'],
 	emailAndPassword: {
 		enabled: true,
 	},
 	advanced: {
-		cookiePrefix: 'my-app',
+		cookiePrefix: 'auth-test',
 		generateId: () => {
 			return crypto.randomUUID();
 		},
@@ -23,13 +23,15 @@ export const auth = betterAuth({
 		},
 	},
 	plugins: [
+		openAPI(),
 		oidcProvider({
-			loginPage: '/sign-in',
-			consentPage: '/sign-in/#consent',
-			scopes: ['app:test'],
-			metadata: {},
-			generateClientId: () => {
-				return crypto.randomUUID();
+			loginPage: 'http://localhost:3000/sign-in',
+			consentPage: 'http://localhost:3000/consent',
+			scopes: ['read', 'read+write'],
+			metadata: {
+				issuer: 'http://localhost:3000',
+				authorization_endpoint: 'http://localhost:3000/api/auth/oauth2/authorize',
+				token_endpoint: 'http://localhost:3000/api/auth/oauth2/token',
 			},
 		}),
 	],

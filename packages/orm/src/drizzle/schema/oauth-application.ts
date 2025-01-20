@@ -6,7 +6,7 @@ import { oauthConsent } from './oauth-consent.ts';
 
 export const oauthApplication = pgTable('oauthApplication', {
 	...baseTable,
-	clientId: uuid('clientId').unique().defaultRandom(),
+	clientId: text('clientId').unique().notNull(),
 	clientSecret: text('clientSecret').notNull(),
 	name: text('name').notNull(),
 	redirectURLs: text('redirectURLs').notNull(),

@@ -1,16 +1,16 @@
 // @deno-types="@types/react"
-import { useEffect, useState } from 'react';
-import { createLazyRoute, useNavigate } from '@tanstack/react-router';
+import React from 'react';
+import { createLazyRoute } from '@tanstack/react-router';
 import { authClient } from '@/lib/auth.ts';
 import { api } from '@/lib/api.ts';
 
 type ClientApps = Awaited<ReturnType<Awaited<ReturnType<typeof api.client.apps['$get']>>['json']>>;
 
 const Home = () => {
-	const navigate = useNavigate();
-	const [apps, setApps] = useState<ClientApps>([]);
-	const [name, setName] = useState('');
-	const [redirectURL, setRedirectURL] = useState('');
+	const navigate = Route.useNavigate();
+	const [apps, setApps] = React.useState<ClientApps>([]);
+	const [name, setName] = React.useState('');
+	const [redirectURL, setRedirectURL] = React.useState('');
 
 	const getApps = async () => {
 		const response = await api.client.apps.$get();
@@ -30,7 +30,7 @@ const Home = () => {
 		});
 	};
 
-	useEffect(() => {
+	React.useEffect(() => {
 		getApps();
 	}, []);
 
@@ -41,9 +41,9 @@ const Home = () => {
 				<button onClick={signOut}>Sign Out</button>
 
 				<ul>
-					{apps.map((app) => {
+					{apps.map((app, key) => {
 						return (
-							<li>
+							<li key={key}>
 								<div>
 									<p>{app.name}</p>
 									<p>{app.redirectURLs}</p>

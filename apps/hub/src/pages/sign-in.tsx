@@ -1,6 +1,6 @@
 // @deno-types="@types/react"
 import * as React from 'react';
-import { createLazyRoute, useNavigate } from '@tanstack/react-router';
+import { createLazyRoute } from '@tanstack/react-router';
 import { authClient } from '@/lib/auth.ts';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@auth-test/ui/src/components/card.tsx';
 import { Button } from '@auth-test/ui/src/components/button.tsx';
@@ -8,7 +8,6 @@ import { Input } from '@auth-test/ui/src/components/input.tsx';
 import { Label } from '@auth-test/ui/src/components/label.tsx';
 
 const SignIn = () => {
-	const navigate = useNavigate();
 	const [email, setEmail] = React.useState('');
 	const [password, setPassword] = React.useState('');
 
@@ -26,17 +25,16 @@ const SignIn = () => {
 						<form
 							onSubmit={async (event) => {
 								event.preventDefault();
-								const { data, error } = await authClient.signIn.email({
+								await authClient.signIn.email({
 									email,
 									password,
+									callbackURL: '/',
+									fetchOptions: {
+										onSuccess: (data: { response: { url: string } }) => {
+											location.href = data.response.url;
+										},
+									},
 								});
-								if (error) {
-									console.error(error);
-								}
-
-								if (data) {
-									navigate({ to: '/' });
-								}
 							}}
 						>
 							<div className='flex flex-col gap-6'>

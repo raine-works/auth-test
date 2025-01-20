@@ -16,16 +16,27 @@ const indexRoute = createRoute({
 			});
 		}
 	},
-}).lazy(() => import('./pages/home.tsx').then((d) => d.Route));
+}).lazy(() => import('@/pages/home.tsx').then((d) => d.Route));
 
 const signUpRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	path: '/sign-up',
-}).lazy(() => import('./pages/sign-up.tsx').then((d) => d.Route));
+}).lazy(() => import('@/pages/sign-up.tsx').then((d) => d.Route));
 
 const signInRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	path: '/sign-in',
-}).lazy(() => import('./pages/sign-in.tsx').then((d) => d.Route));
+}).lazy(() => import('@/pages/sign-in.tsx').then((d) => d.Route));
 
-export const routeTree = rootRoute.addChildren([indexRoute, signUpRoute, signInRoute]);
+const consentRoute = createRoute({
+	getParentRoute: () => rootRoute,
+	path: '/consent',
+	validateSearch: (search: Record<string, any>) => {
+		return {
+			client_id: search.client_id as string,
+			scope: search.scope as string[],
+		};
+	},
+}).lazy(() => import('@/pages/consent.tsx').then((d) => d.Route));
+
+export const routeTree = rootRoute.addChildren([indexRoute, signUpRoute, signInRoute, consentRoute]);

@@ -6,7 +6,7 @@ import { user } from './user.ts';
 export const oauthConsent = pgTable('oauthConsent', {
 	...baseTable,
 	userId: uuid('userId').references(() => user.id),
-	clientId: uuid('clientId').references(() => oauthApplication.clientId),
+	clientId: text('clientId').references(() => oauthApplication.clientId),
 	scopes: text('scopes').notNull(),
 	consentGiven: boolean('consentGiven'),
 });

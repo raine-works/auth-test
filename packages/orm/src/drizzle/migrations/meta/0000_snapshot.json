@@ -1,5 +1,5 @@
 {
-  "id": "e04e7d26-44df-46f8-bbfa-ec7ea8d6e8aa",
+  "id": "64b81006-a5c3-42c4-8be9-00376ce8a04e",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -163,7 +163,7 @@
         },
         "clientId": {
           "name": "clientId",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },
@@ -242,10 +242,9 @@
         },
         "clientId": {
           "name": "clientId",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": false,
-          "notNull": false,
-          "default": "gen_random_uuid()"
+          "notNull": true
         },
         "clientSecret": {
           "name": "clientSecret",
@@ -339,7 +338,7 @@
         },
         "clientId": {
           "name": "clientId",
-          "type": "uuid",
+          "type": "text",
           "primaryKey": false,
           "notNull": false
         },

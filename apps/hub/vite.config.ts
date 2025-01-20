@@ -18,6 +18,10 @@ export default defineConfig({
 	server: {
 		host: '127.0.0.1',
 		port: 3000,
+		cors: {
+			origin: ['http://localhost:4000', 'http://localhost:8000'],
+			credentials: true,
+		},
 		proxy: {
 			'/api': {
 				target: 'http://127.0.0.1:8000',

@@ -7,4 +7,17 @@ export const getClientApps = async () => {
 	});
 };
 
+export const getClientAppByClientId = async (clientId: string) => {
+	const record = await db.query.oauthApplication.findFirst({
+		where: (record, { eq }) => eq(record.clientId, clientId),
+	});
+	if (record) {
+		return {
+			name: record.name,
+		};
+	} else {
+		return undefined;
+	}
+};
+
 export { db, schema };

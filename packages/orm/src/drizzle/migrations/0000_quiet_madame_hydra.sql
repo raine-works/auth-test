@@ -22,7 +22,7 @@ CREATE TABLE "oauthAccessToken" (
 	"refreshToken" text NOT NULL,
 	"accessTokenExpiresAt" timestamp NOT NULL,
 	"refreshTokenExpiresAt" timestamp NOT NULL,
-	"clientId" uuid,
+	"clientId" text,
 	"userId" uuid,
 	"scopes" text NOT NULL
 );
@@ -31,7 +31,7 @@ CREATE TABLE "oauthApplication" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"updatedAt" timestamp DEFAULT now() NOT NULL,
-	"clientId" uuid DEFAULT gen_random_uuid(),
+	"clientId" text NOT NULL,
 	"clientSecret" text NOT NULL,
 	"name" text NOT NULL,
 	"redirectURLs" text NOT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE "oauthConsent" (
 	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"updatedAt" timestamp DEFAULT now() NOT NULL,
 	"userId" uuid,
-	"clientId" uuid,
+	"clientId" text,
 	"scopes" text NOT NULL,
 	"consentGiven" boolean
 );
